@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 
 export default function Profile() {
+  const navigate = useNavigate();
   const roles = ["Engineering", "Sales", "Marketing"];
   const years_of_Experience = [0, 1, 2, 3];
   return (
@@ -115,7 +117,10 @@ export default function Profile() {
               />
             </div>
           </div>
-          <button class="bg-[#1673FF] hover:bg-blue-500 text-white py-2 px-4 mt-7 rounded-full ">
+          <button
+            class="bg-[#1673FF] hover:bg-blue-500 text-white py-2 px-4 mt-7 rounded-full"
+            onClick={() => navigate("/")}
+          >
             Create your Profile
           </button>
         </form>

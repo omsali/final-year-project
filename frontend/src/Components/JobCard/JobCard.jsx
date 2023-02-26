@@ -17,7 +17,9 @@ function JobCard() {
             Technology company focusing on online advertising and search engine
             technology
           </p>
-          <p className="text-xs tracking-tighter text-neutral-400">11-50 EMPLOYEES</p>
+          <p className="text-xs tracking-tighter text-neutral-400">
+            11-50 EMPLOYEES
+          </p>
         </div>
       </div>
       <div className="bg-[#E0F9EA] text-[#00431B] font-semibold w-fit text-sm rounded-xl px-2 py-0.5">
