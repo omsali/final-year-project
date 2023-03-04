@@ -4,6 +4,10 @@ import Profile from "./Pages/Profile/Profile";
 import { Jobs } from "./Pages/Jobs/Jobs";
 import { UserProfile } from "./Pages/UserProfile/UserProfile";
 import { AppliedApplications } from "./Pages/Applied Jobs/AppliedApplications";
+import { VerifyRecruiter } from "./Pages/RecruiterProfile/VerifyRecruiter";
+import { CreateJob } from "./Pages/RecruiterJobs/CreateJob";
+import { PostedJob } from "./Pages/RecruiterJobs/PostedJob";
+import { RecruiterProfile } from "./Pages/RecruiterProfile/RecruiterProfile";
 function App() {
   return (
     <div className="App">
@@ -19,6 +23,11 @@ function App() {
         />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/applied" element={<AppliedApplications />} />
+        {/* <Route path="/recruiter/profile" element={<UserProfile />} /> */}
+        <Route path="/recruiter/createjob" element={<CreateJob />} />
+        <Route path="/recruiter/postedjob" element={<PostedJob />} />
+        <Route path="/recruiter/access" element={<VerifyRecruiter />} />
+        <Route path="/recruiter/company" element={<RecruiterProfile />} />
       </Routes>
     </div>
   );
