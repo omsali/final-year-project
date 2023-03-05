@@ -8,6 +8,8 @@ import { VerifyRecruiter } from "./Pages/RecruiterProfile/VerifyRecruiter";
 import { CreateJob } from "./Pages/RecruiterJobs/CreateJob";
 import { PostedJob } from "./Pages/RecruiterJobs/PostedJob";
 import { RecruiterProfile } from "./Pages/RecruiterProfile/RecruiterProfile";
+import { LoginPage } from "./Pages/Authentication/LoginPage";
+import { SignupPage } from "./Pages/Authentication/SignupPage";
 function App() {
   return (
     <div className="App">
@@ -23,6 +25,12 @@ function App() {
         />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/applied" element={<AppliedApplications />} />
+
+        {/* Authentication */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+
+        {/* The other side */}
         {/* <Route path="/recruiter/profile" element={<UserProfile />} /> */}
         <Route path="/recruiter/createjob" element={<CreateJob />} />
         <Route path="/recruiter/postedjob" element={<PostedJob />} />
