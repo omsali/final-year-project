@@ -1,5 +1,6 @@
 const Job = require("../models/jobModel");
 
+// Create Job -- Recruiter
 exports.createJob = async (req, res, next) => {
   const job = await Job.create(req.body);
   res.status(201).json({
@@ -8,6 +9,11 @@ exports.createJob = async (req, res, next) => {
   });
 };
 
-exports.getAllJobs = (req, res, next) => {
-  res.status(200).json({ message: "Router is working fine" });
+// Get all Jobs -- Student
+exports.getAllJobs = async (req, res, next) => {
+  const jobs = await Job.find();
+  res.status(200).json({
+    success: true,
+    jobs,
+  });
 };
