@@ -9,6 +9,14 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  contact_number: {
+    type: Number,
+    maxLength: [10, "Contact Number cannot exceed 10 characters"],
+  },
   class: {
     type: String,
   },
@@ -27,7 +35,6 @@ const studentSchema = new mongoose.Schema({
       },
       url: {
         type: String,
-        // required: true,
       },
     },
   ],
