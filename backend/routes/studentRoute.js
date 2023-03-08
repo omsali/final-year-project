@@ -1,12 +1,13 @@
 const express = require("express");
 const {
-  createStudentUser,
+  // createStudentUser,
   getAllStudents,
+  registerStudentUser,
 } = require("../controllers/studentController");
 
 const router = express.Router();
 
 router.route("/students").get(getAllStudents);
-router.route("/student/new").post(createStudentUser);
+router.route("/student/register").post(registerStudentUser);
 
 module.exports = router;
