@@ -8,7 +8,9 @@ const connectDatabase = () => {
       // useCreateIndex: true,
     })
     .then((data) => {
-      console.log(`Mongodb connected with server job portal ${data.connection.host}`);
+      console.log(
+        `Mongodb connected with server job portal ${data.connection.host}`
+      );
     })
     .catch((error) => console.log("Error in connecting mongodb", error));
 };
