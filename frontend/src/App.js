@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Jobs />} />
+        <Route path="/jobs" element={<Jobs />} />
         <Route
           path="/createprofile"
           element={
