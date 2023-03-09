@@ -115,20 +115,20 @@ studentSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-// Generating Password reset token
-studentSchema.methods.getResetPasswordToken = function () {
-  // Generating Token
-  const resetToken = crypto.randomBytes(20).toString("hex");
+// // Generating Password reset token
+// studentSchema.methods.getResetPasswordToken = function () {
+//   // Generating Token
+//   const resetToken = crypto.randomBytes(20).toString("hex");
 
-  // Hashing and adding to user schema
-  this.resetPasswordToken = crypto
-    .createHash("sha256")
-    .update(resetToken)
-    .digest("hex");
+//   // Hashing and adding to user schema
+//   this.resetPasswordToken = crypto
+//     .createHash("sha256")
+//     .update(resetToken)
+//     .digest("hex");
 
-  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+//   this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
 
-  return resetToken;
-};
+//   return resetToken;
+// };
 
 module.exports = mongoose.model("Student", studentSchema);
