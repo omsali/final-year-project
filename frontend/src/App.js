@@ -10,6 +10,7 @@ import { PostedJob } from "./Pages/RecruiterJobs/PostedJob";
 import { RecruiterProfile } from "./Pages/RecruiterProfile/RecruiterProfile";
 import { LoginPage } from "./Pages/Authentication/LoginPage";
 import { SignupPage } from "./Pages/Authentication/SignupPage";
+import { LandingPage } from "./Pages/LandingPage/LandingPage";
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
             </div>
           }
         />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/applied" element={<AppliedApplications />} />
 
