@@ -1,6 +1,6 @@
 import React from "react";
 
-function JobCard() {
+function JobCard({job}) {
   return (
     <div className="border-solid border-2 border-neutral-200 rounded-md border-b-4 mt-8 px-6 py-6 flex flex-col gap-4">
       <div className="flex w-full gap-4 ">
@@ -12,7 +12,7 @@ function JobCard() {
           />
         </div>
         <div>
-          <p className="text-xl font-semibold">Google</p>
+          <p className="text-xl font-semibold">{job?.job_title}</p>
           <p className="text-base">
             Technology company focusing on online advertising and search engine
             technology
