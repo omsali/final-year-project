@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Dropdown from "../../Components/Dropdown/Dropdown";
+import axios from "axios";
+import { createPortal } from "react-dom";
 
 export default function Profile() {
   const navigate = useNavigate();
   const roles = ["Engineering", "Sales", "Marketing"];
   const years_of_Experience = [0, 1, 2, 3];
+  const [createProfileData,setCreateProfileData] = useState({
+    email:"",
+    role:"Engineer",
+    yoe:0,
+    linkedin_profile:"",
+    personal_website:""
+  })
+  const handleCreateProfile = async()=>{
+    
+
+      const response = await axios.post("http://localhost:5000/api/v1/student/register/createprofile",createProfileData)
+      console.log("response is ",response)
+      navigate("/")
+    
+  }
   return (
     <div className="mb-20">
       <div className="flex justify-center items-center text-center rounded-full border-solid border-slate-300 border-2 w-fit m-auto px-10 py-3 gap-2 mt-14 bg-white text-slate-500 font-semibold cursor-pointer">
@@ -28,15 +45,16 @@ export default function Profile() {
           <div>
             <label
               class="block text-gray-700 text-md font-bold mb-3 mt-2"
-              for="username"
+              for="email"
             >
-              Username
+              Email
             </label>
             <input
               class="shadow appearance-none border rounded py-2 px-3 mb-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
+              id="email"
               type="text"
-              placeholder="Username"
+              placeholder="Email"
+              onChange={(e)=>setCreateProfileData({...createProfileData,email:e.target.value})}
             />
           </div>
           <div>
@@ -100,6 +118,7 @@ export default function Profile() {
                 id="linkedin-profile-link"
                 type="text"
                 placeholder="https://linkedin.com/in"
+                onChange={(e)=>setCreateProfileData({...createProfileData,linkedin_profile:e.target.value})}
               />
             </div>
             <div>
@@ -114,12 +133,13 @@ export default function Profile() {
                 id="portfolio-link"
                 type="text"
                 placeholder="https://mypersonalwebsite.com"
+                onChange={(e)=>setCreateProfileData({...createProfileData,personal_website:e.target.value})}
               />
             </div>
           </div>
           <button
             class="bg-[#1673FF] hover:bg-blue-500 text-white py-2 px-4 mt-7 rounded-full"
-            onClick={() => navigate("/")}
+            onClick={() => handleCreateProfile()}
           >
             Create your Profile
           </button>
