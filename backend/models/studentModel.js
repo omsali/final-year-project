@@ -51,43 +51,58 @@ const studentSchema = new mongoose.Schema({
     type: String,
     default: "student",
   },
+  yoe:{
+    type:Number,
+    default:0,
+  },
   skills: [],
   linkedin_profile: {
     type: String,
+    default:""
   },
   github_profile: {
     type: String,
+    default:""
   },
   leetcode_profile: {
     type: String,
+    default:""
   },
   personal_website: {
     type: String,
+    default:""
   },
   achievements: {
     type: String,
+    default:""
   },
   projects: [
     {
       name: {
         type: String,
+        default:""
       },
       summary: {
         type: String,
+        default:""
       },
       github_link: {
         type: String,
+        default:""
       },
       live_link: {
         type: String,
+        default:""
       },
       description: {
         type: String,
+        default:""
       },
     },
   ],
   cgpa: {
     type: Number,
+    default:0
     // required: true,
   },
   resetPasswordToken: String,
