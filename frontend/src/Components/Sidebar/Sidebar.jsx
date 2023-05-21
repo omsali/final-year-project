@@ -30,9 +30,9 @@ function Sidebar() {
         </div>
         <div
           className={`flex flex-col justify-center items-center text-sm cursor-pointer w-20 py-2 rounded-md ${
-            pathname === "/" ? " text-[#143FD7] bg-[#ecf4fd]" : ""
+            pathname === "/jobs" ? " text-[#143FD7] bg-[#ecf4fd]" : ""
           } `}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/jobs")}
         >
           <BsBagPlus className="text-xl" />
           <span>Jobs</span>

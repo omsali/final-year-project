@@ -1,6 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeApplyStatus } from "../../redux/features/jobSlice";
+function JobCard({ job }) {
+  const dispatch = useDispatch();
+  const studentId = useSelector((state) => state.job.id);
+  const applyStatus = useSelector((state) => state.job.applyStatus);
+  const appliedJobs = useSelector((state) => state.job.appliedJobs);
 
-function JobCard({job}) {
+  // Apply Job Handler
+  const applyJobHandler = async (jobId) => {
+    const response = await axios.post(
+      "http://localhost:5000/api/v1/job/apply",
+      { student_id: studentId, jobId }
+    );
+    dispatch(changeApplyStatus(response.data));
+  };
+
+  // Check whether the job opening is already applied
+  const isApplied = (id) => {
+    const job = appliedJobs.find((appliedJob) => appliedJob._id === id);
+    return job ? true : false;
+  };
+
+  // Re-render when the applyStatus changes
+  useEffect(() => {}, [applyStatus]);
   return (
     <div className="border-solid border-2 border-neutral-200 rounded-md border-b-4 mt-8 px-6 py-6 flex flex-col gap-4">
       <div className="flex w-full gap-4 ">
@@ -36,11 +60,28 @@ function JobCard({job}) {
           <p className="tracking-tighter text-xs font-semibold text-[#00431B]">
             2 WEEKS AGO
           </p>
-          <button className="cursor-pointer border border-solid border-black text-black font-semibold px-2 py-0.5 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-md transition-all delay-170">
+          <button
+            className="cursor-pointer border border-solid border-black text-black font-semibold px-2 py-0.5 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-md transition-all delay-170"
+            onClick={() => {
+              isApplied(job._id)
+                ? console.log("Applied")
+                : console.log("Not applied");
+            }}
+          >
             Save
           </button>
-          <button className="cursor-pointer text-white bg-black py-0.5 px-2 rounded-md hover:bg-[#076efe] transition-all delay-150">
-            Learn More
+          <button
+            disable={isApplied() ? true : false}
+            className={` text-white py-0.5 px-2 rounded-md 
+            ${
+              isApplied(job._id)
+                ? "bg-red-100 cursor-not-allowed"
+                : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
+            }
+            `}
+            onClick={() => applyJobHandler(job?._id)}
+          >
+            {isApplied(job._id) ? "Applied ✔" : "Apply"}
           </button>
         </div>
       </div>

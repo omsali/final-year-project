@@ -1,9 +1,11 @@
 import { AppliedJobCard } from "../../Components/JobCard/AppliedJobCard";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { Sidebar } from "../../Components/Sidebar/Sidebar";
+import { useDispatch, useSelector } from "react-redux";
 
 function AppliedApplications() {
-  const jobs = [1, 2, 3, 4, 5];
+  const appliedJobs = useSelector((state) => state.job.appliedJobs);
+
   return (
     <div>
       <Navbar />
@@ -17,9 +19,10 @@ function AppliedApplications() {
             </p>
             <p className="cursor-pointer">Archived</p>
           </div>
-          {jobs.map((job) => {
-            return <AppliedJobCard />;
-          })}
+          {appliedJobs &&
+            appliedJobs.map((appliedJob) => {
+              return <AppliedJobCard appliedJob={appliedJob} />;
+            })}
         </div>
       </div>
     </div>
