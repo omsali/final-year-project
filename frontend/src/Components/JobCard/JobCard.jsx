@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeApplyStatus } from "../../redux/features/jobSlice";
+import {
+  changeApplyStatus,
+  changeSavedStatus,
+} from "../../redux/features/jobSlice";
 function JobCard({ job }) {
   const dispatch = useDispatch();
   const studentId = useSelector((state) => state.job.id);
   const applyStatus = useSelector((state) => state.job.applyStatus);
   const appliedJobs = useSelector((state) => state.job.appliedJobs);
-
+  const savedStatus = useSelector((state) => state.job.savedStatus);
   // Apply Job Handler
   const applyJobHandler = async (jobId) => {
     const response = await axios.post(
@@ -17,6 +20,16 @@ function JobCard({ job }) {
     dispatch(changeApplyStatus(response.data));
   };
 
+  // Save Job Handler
+  const saveJobHandler = async (jobId) => {
+    const response = await axios.post("http://localhost:5000/api/v1/job/save", {
+      studentId,
+      jobId,
+    });
+    console.log("Saved jobs are ", response);
+    dispatch(changeSavedStatus(response.data));
+  };
+
   // Check whether the job opening is already applied
   const isApplied = (id) => {
     const job = appliedJobs.find((appliedJob) => appliedJob._id === id);
@@ -24,7 +37,7 @@ function JobCard({ job }) {
   };
 
   // Re-render when the applyStatus changes
-  useEffect(() => {}, [applyStatus]);
+  useEffect(() => {}, [applyStatus, savedStatus]);
   return (
     <div className="border-solid border-2 border-neutral-200 rounded-md border-b-4 mt-8 px-6 py-6 flex flex-col gap-4">
       <div className="flex w-full gap-4 ">
@@ -62,11 +75,7 @@ function JobCard({ job }) {
           </p>
           <button
             className="cursor-pointer border border-solid border-black text-black font-semibold px-2 py-0.5 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-md transition-all delay-170"
-            onClick={() => {
-              isApplied(job._id)
-                ? console.log("Applied")
-                : console.log("Not applied");
-            }}
+            // onClick={() => saveJobHandler(job._id)}
           >
             Save
           </button>
