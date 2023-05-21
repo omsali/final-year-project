@@ -51,64 +51,71 @@ const studentSchema = new mongoose.Schema({
     type: String,
     default: "student",
   },
-  yoe:{
-    type:Number,
-    default:0,
+  yoe: {
+    type: Number,
+    default: 0,
   },
   skills: [],
   linkedin_profile: {
     type: String,
-    default:""
+    default: "",
   },
   github_profile: {
     type: String,
-    default:""
+    default: "",
   },
   leetcode_profile: {
     type: String,
-    default:""
+    default: "",
   },
   personal_website: {
     type: String,
-    default:""
+    default: "",
   },
   achievements: {
     type: String,
-    default:""
+    default: "",
   },
   projects: [
     {
       name: {
         type: String,
-        default:""
+        default: "",
       },
       summary: {
         type: String,
-        default:""
+        default: "",
       },
       github_link: {
         type: String,
-        default:""
+        default: "",
       },
       live_link: {
         type: String,
-        default:""
+        default: "",
       },
       description: {
         type: String,
-        default:""
+        default: "",
       },
     },
   ],
   cgpa: {
     type: Number,
-    default:0
+    default: 0,
     // required: true,
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
+  appliedJobs: {
+    type: Array,
+    default: [],
+  },
+  savedJobs: {
+    type: Array,
+    default: [],
+  },
 });
-
 
 // Hashing Password
 studentSchema.pre("save", async function (next) {

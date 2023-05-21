@@ -31,9 +31,12 @@ const recruiterSchema = new mongoose.Schema({
   company_info: {
     type: String,
   },
+  jobsPosted: {
+    type: Array,
+    default: [],
+  },
 });
 module.exports = mongoose.model("Recruiter", recruiterSchema);
-
 
 // Hashing Password
 // recruiterSchema.pre("save", async function (next) {

@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema({
+  recruiter_id: {
+    type: String,
+  },
   job_title: {
     type: String,
     required: [true, "Please enter Job Title"],
@@ -28,7 +31,10 @@ const jobSchema = new mongoose.Schema({
   remote_work_policy: {
     type: String,
   },
+  applied_students: {
+    type: Array,
+    default: [],
+  },
 });
 
 module.exports = mongoose.model("Jobs", jobSchema);
-  
