@@ -1,9 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
-import jobReducer from "./features/jobSlice"
+import { configureStore } from "@reduxjs/toolkit";
+import jobReducer from "./features/jobSlice";
+import handlerReducer from "./features/handlerSlice";
 const store = configureStore({
   reducer: {
-    job:jobReducer
+    job: jobReducer,
+    handler: handlerReducer,
   },
-})
+});
 
-export default store
+export default store;
