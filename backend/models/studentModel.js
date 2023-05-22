@@ -115,6 +115,28 @@ const studentSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
+  education: {
+    type: [
+      {
+        college_name: {
+          type: String,
+        },
+        graduation: {
+          type: Number,
+        },
+        degree: {
+          type: String,
+        },
+        gpa: {
+          type: Number,
+        },
+        max_gpa: {
+          type: Number,
+        },
+      },
+    ],
+    default: [],
+  },
 });
 
 // Hashing Password
