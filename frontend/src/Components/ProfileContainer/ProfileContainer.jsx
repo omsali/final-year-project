@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { About } from "../About/About";
 import { AboutHeader } from "../About/AboutHeader";
 import { Achievements } from "../Achievements/Achievements";
@@ -6,10 +6,16 @@ import { Education } from "../Education/Education";
 import { Skills } from "../Skills/Skills";
 import SocialProfile from "../Social Profile/SocialProfile";
 import { ProfileOverview } from "./ProfileOverview";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudentInfo } from "../../redux/features/studentSlice";
 
 function ProfileContainer() {
   const currentTab = useSelector((state) => state.handler.profileTab);
+  const studentId = useSelector((state) => state.job.id);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getStudentInfo(studentId));
+  }, []);
   return (
     <div className="">
       <AboutHeader />

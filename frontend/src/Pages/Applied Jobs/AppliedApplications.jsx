@@ -20,8 +20,8 @@ function AppliedApplications() {
             <p className="cursor-pointer">Archived</p>
           </div>
           {appliedJobs &&
-            appliedJobs.map((appliedJob) => {
-              return <AppliedJobCard appliedJob={appliedJob} />;
+            appliedJobs.map((appliedJob,i) => {
+              return <AppliedJobCard key={i} appliedJob={appliedJob} />;
             })}
         </div>
       </div>

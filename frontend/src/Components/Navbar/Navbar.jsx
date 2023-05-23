@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="navbar-options">
         {showSearch && (
           <input
-            class="shadow appearance-none border rounded py-4 h-7 px-2 mb-2 text-gray-700 focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded py-4 h-7 px-2 mb-2 text-gray-700 focus:outline-none focus:shadow-outline"
             id="search-jobs"
             type="text"
             placeholder="Search"

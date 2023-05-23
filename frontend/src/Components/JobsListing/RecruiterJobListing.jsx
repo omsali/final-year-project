@@ -5,8 +5,8 @@ function RecruiterJobListing() {
   const arr = [1, 2, 3, 4];
   return (
     <div>
-      {arr.map((item) => {
-        return <RecruiterPostedJobCard />;
+      {arr.map((item,i) => {
+        return <RecruiterPostedJobCard key={i} />;
       })}
     </div>
   );

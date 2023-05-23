@@ -4,20 +4,19 @@ const sendToken = require("../utils/jwtToken");
 // Create Student User
 // User Registration
 exports.registerStudentUser = catchAsyncErrors(async (req, res, next) => {
-    const { firstName, lastName, email, password } = req.body;
-    const student = await Student.create({
-      firstName,
-      lastName,
-      email,
-      password,
-    });
-    res.status(200).json({
-      success:true,
-      message:"User created successfully",
-      student
-    })
-    // sendToken(student, 201, res);
-  
+  const { firstName, lastName, email, password } = req.body;
+  const student = await Student.create({
+    firstName,
+    lastName,
+    email,
+    password,
+  });
+  res.status(200).json({
+    success: true,
+    message: "User created successfully",
+    student,
+  });
+  // sendToken(student, 201, res);
 });
 
 // Login User
@@ -66,15 +65,83 @@ exports.getAllStudents = async (req, res, next) => {
   });
 };
 
-exports.createNewProfile = async(req,res,next)=>{
-  const {email,role,yoe,linkedin_profile,personal_website} = req.body;
+exports.createNewProfile = async (req, res, next) => {
+  const { email, role, yoe, linkedin_profile, personal_website } = req.body;
   const updatedData = {
-    role,yoe,linkedin_profile,personal_website
-  }
-  const student = await Student.findOneAndUpdate({email},updatedData);
+    role,
+    yoe,
+    linkedin_profile,
+    personal_website,
+  };
+  const student = await Student.findOneAndUpdate({ email }, updatedData);
 
   res.status(200).send({
-    success:true,
-    student
-  })
-}
+    success: true,
+    student,
+  });
+};
+
+exports.getStudentInfo = async (req, res, next) => {
+  const { id } = req.params;
+  const student = await Student.find({ _id: id });
+  res.status(200).json({
+    success: true,
+    message: "Student details fetched successfully",
+    student,
+  });
+};
+
+exports.updateStudentAboutSection = async (req, res, next) => {
+  const { id } = req.params;
+  const { firstName, lastName, bio } = req.body;
+  const student = await Student.findOneAndUpdate(
+    { _id: id },
+    { firstName, lastName, bio }
+  );
+  res.status(200).json({
+    success: true,
+    message: "About section updated successfully",
+    student,
+  });
+};
+
+exports.updateStudentSocials = async (req, res, next) => {
+  const { id } = req.params;
+  const {
+    personal_website,
+    linkedin_profile,
+    github_profile,
+    leetcode_profile,
+  } = req.body;
+  const student = await Student.findOneAndUpdate(
+    { _id: id },
+    { personal_website, linkedin_profile, github_profile, leetcode_profile }
+  );
+  res.status(200).json({
+    success: true,
+    message: "Social Profiles updated successfully",
+    student,
+  });
+};
+
+exports.updateStudentAchievements = async (req, res, next) => {
+  const { id } = req.params;
+  const { achievements } = req.body;
+  const student = await Student.findOneAndUpdate({ _id: id }, { achievements });
+  res.status(200).json({
+    success: true,
+    message: "Achievements section updated successfully",
+    student,
+  });
+};
+
+exports.updateStudentSkills = async (req, res, next) => {
+  const { id } = req.params;
+  const { skills } = req.body;
+  const student = await Student.findOneAndUpdate({ _id: id }, { skills });
+  res.status(200).json({
+    success: true,
+    message: "Skills section updated successfully",
+    student,
+  });
+};

@@ -10,8 +10,8 @@ function JobsListing() {
   }, []);
   return (
     <div>
-      {jobs.map((job) => {
-        return <JobCard job={job} />;
+      {jobs.map((job, i) => {
+        return <JobCard job={job} key={i} />;
       })}
     </div>
   );

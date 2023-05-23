@@ -1,5 +1,5 @@
 import { MdSchool } from "react-icons/md";
-function EducationCard() {
+function EducationCard({ edu }) {
   return (
     <div className="border border-solid border-neutral-300 border-b-4 mb-4 bg-[#FDFDFD] flex justify-between px-4 py-4 rounded-md">
       <div className="flex gap-8 justify-center">
@@ -7,10 +7,12 @@ function EducationCard() {
           <MdSchool className="text-2xl" />
         </div>
         <div>
-          <p className="font-bold">Sanjivani College of Engineering</p>
-          <p className="tracking-tighter font-thin">Computer Science,BEng</p>
-          <p className="text-sm">9.1/10 GPA</p>
-          <p className="text-sm text-neutral-500">2023</p>
+          <p className="font-bold">{edu.college_name}</p>
+          <p className="tracking-tighter font-thin">{edu.degree},BEng</p>
+          <p className="text-sm">
+            {edu.gpa.$numberDecimal}/{edu.max_gpa} GPA
+          </p>
+          <p className="text-sm text-neutral-500">{edu.graduation}</p>
         </div>
       </div>
       <div className="text-xs text-neutral-500 cursor-pointer">Edit</div>

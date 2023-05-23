@@ -128,7 +128,7 @@ const studentSchema = new mongoose.Schema({
           type: String,
         },
         gpa: {
-          type: Number,
+          type: mongoose.Types.Decimal128,
         },
         max_gpa: {
           type: Number,

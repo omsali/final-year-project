@@ -81,9 +81,9 @@ const RecruiterCreateJobContainer = () => {
                                 Skills<span className="text-red-700 font-thin text-sm">*</span>
                             </label>
                             <div className="flex gap-2">
-                                {skills.map((item) => {
+                                {skills.map((item,i) => {
                                     return (
-                                        <div className="flex gap-1 items-center border border-solid w-fit rounded-md px-3 py-1.5 tracking-tighter bg-[#ededed] mb-2.5">
+                                        <div className="flex gap-1 items-center border border-solid w-fit rounded-md px-3 py-1.5 tracking-tighter bg-[#ededed] mb-2.5" key={i}>
                                             <p>{item}</p>
                                             <RxCross2 className="text-neutral-500 cursor-pointer" />
                                         </div>
@@ -128,9 +128,9 @@ const RecruiterCreateJobContainer = () => {
                                 Where are you hiring for this role?
                             </p>
                             <div className="flex gap-2">
-                                {location.map((item) => {
+                                {location.map((item,i) => {
                                     return (
-                                        <div className="flex gap-1 items-center border border-solid w-fit rounded-md px-3 py-1.5 tracking-tighter bg-[#ededed] mb-2.5">
+                                        <div className="flex gap-1 items-center border border-solid w-fit rounded-md px-3 py-1.5 tracking-tighter bg-[#ededed] mb-2.5" key={i}>
                                             <p>{item}</p>
                                             <RxCross2 className="text-neutral-500 cursor-pointer" />
                                         </div>
@@ -197,9 +197,9 @@ const RecruiterCreateJobContainer = () => {
                                 Hiring region for remote workers
                             </p>
                             <div className="flex gap-2">
-                                {location.map((item) => {
+                                {location.map((item,i) => {
                                     return (
-                                        <div className="flex gap-1 items-center border border-solid w-fit rounded-md px-3 py-1.5 tracking-tighter bg-[#ededed] mb-2.5">
+                                        <div className="flex gap-1 items-center border border-solid w-fit rounded-md px-3 py-1.5 tracking-tighter bg-[#ededed] mb-2.5" key={i}>
                                             <p>{item}</p>
                                             <RxCross2 className="text-neutral-500 cursor-pointer" />
                                         </div>
