@@ -14,7 +14,7 @@ router.route("/recruiter/login").post(loginRecruiter);
 
 // Functional routes
 router
-  .route("/recruiter/students_applied")
+  .route("/recruiter/:id/students_applied")
   .get(getStudentsAppliedForSpecificJob);
 router.route("/recruiter/:id/jobs").get(getJobPostedByRecruiter);
 

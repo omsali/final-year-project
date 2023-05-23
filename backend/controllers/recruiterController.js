@@ -62,8 +62,8 @@ exports.loginRecruiter = catchAsyncErrors(async (req, res, next) => {
 // });
 exports.getStudentsAppliedForSpecificJob = catchAsyncErrors(
   async (req, res, next) => {
-    const { job_id, recruiter_id } = req.body;
-    const { applied_students } = await Job.findById({ _id: job_id });
+    const { id } = req.params;
+    const { applied_students } = await Job.findById({ _id: id });
     const students = await Student.find({ _id: { $in: applied_students } });
     res.status(200).json({
       success: true,
