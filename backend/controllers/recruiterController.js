@@ -16,7 +16,12 @@ exports.registerRecruiterUser = catchAsyncErrors(async (req, res, next) => {
     company_name,
     company_info,
   });
-  sendToken(recruiter, 201, res);
+  res.status(200).json({
+    success: true,
+    message: "User Recruiter created successfully",
+    recruiter,
+  });
+  // sendToken(recruiter, 201, res);
 });
 
 //Recruiter login
@@ -40,7 +45,7 @@ exports.loginRecruiter = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Invalid Email or Password", 401));
   }
 
-  sendToken(user, 200, res);
+  // sendToken(user, 200, res);
 });
 
 //logout
@@ -66,3 +71,13 @@ exports.getStudentsAppliedForSpecificJob = catchAsyncErrors(
     });
   }
 );
+
+exports.getJobPostedByRecruiter = catchAsyncErrors(async (req, res, next) => {
+  const { id } = req.params;
+  const jobs = await Job.find({ recruiter_id: id });
+  res.status(200).json({
+    success: true,
+    message: "Jobs posted by Recruiter fetched successfully",
+    jobs,
+  });
+});

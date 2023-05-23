@@ -2,7 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
   jobs: [],
+  // Static studentId and recruiter to fetch data
   id: "640760d9316868c1913b5c2e",
+  recruiter_id: "646cb0cc7b2a9d4a2761105f",
+  // ************
   appliedJobs: [],
   applyStatus: [],
   savedJobs: [],

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const jobSchema = new mongoose.Schema({
   recruiter_id: {
     type: String,
+    required: true,
   },
   job_title: {
     type: String,
@@ -19,14 +20,22 @@ const jobSchema = new mongoose.Schema({
     type: String,
   },
   work_experience: {
-    type: Number,
+    type: String,
   },
   skills_required: [{ type: String }],
   salary_range: {
-    type: String,
+    type: {
+      to: Number,
+      from: Number,
+    },
+    default: {
+      to: 0,
+      from: 0,
+    },
   },
   location: {
-    type: String,
+    type: Array,
+    default: [],
   },
   remote_work_policy: {
     type: String,

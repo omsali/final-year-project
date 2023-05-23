@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+// const bcrypt = require("bcryptjs");
+// const jwt = require("jsonwebtoken");
 
 const recruiterSchema = new mongoose.Schema({
   firstName: {
@@ -30,10 +30,6 @@ const recruiterSchema = new mongoose.Schema({
   },
   company_info: {
     type: String,
-  },
-  jobsPosted: {
-    type: Array,
-    default: [],
   },
 });
 module.exports = mongoose.model("Recruiter", recruiterSchema);
