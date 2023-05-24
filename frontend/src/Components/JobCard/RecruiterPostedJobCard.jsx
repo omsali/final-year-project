@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApplicantsForJob } from "../../redux/features/recruiterSlice";
+import { ViewApplicantsModal } from "../ViewApplicantsModal/ViewApplicantsModal";
 
 function RecruiterPostedJobCard({ job }) {
+  const [showApplicantsModal, setShowApplicantsModal] = useState(false);
   const dispatch = useDispatch();
   const applicants = useSelector((state) => state.recruiter.applicants);
   const getApplicantsHandler = () => {
     dispatch(getApplicantsForJob(job._id));
   };
   // console.log("Applicants are ", applicants);
-
+  const closeModal = () => {
+    setShowApplicantsModal(!showApplicantsModal);
+  };
   return (
     <div className="border-solid border-2 border-neutral-200 rounded-md border-b-4 mt-8 px-6 py-6 flex flex-col gap-4">
       <div className="flex w-full gap-4 ">
@@ -45,7 +49,10 @@ function RecruiterPostedJobCard({ job }) {
           </p>
           <button
             className="cursor-pointer border border-solid border-black text-black font-semibold px-2 py-0.5 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-md transition-all delay-170"
-            onClick={() => getApplicantsHandler()}
+            onClick={() => {
+              getApplicantsHandler();
+              setShowApplicantsModal(!showApplicantsModal);
+            }}
           >
             View Applicants
           </button>
@@ -53,6 +60,15 @@ function RecruiterPostedJobCard({ job }) {
             Close Openings
           </button>
         </div>
+      </div>
+      <div>
+        {showApplicantsModal && (
+          <ViewApplicantsModal
+            clickHandler={closeModal}
+            isOpen={showApplicantsModal}
+            applicants={applicants}
+          />
+        )}
       </div>
     </div>
   );
