@@ -11,12 +11,14 @@ function JobCard({ job }) {
   const applyStatus = useSelector((state) => state.job.applyStatus);
   const appliedJobs = useSelector((state) => state.job.appliedJobs);
   const savedStatus = useSelector((state) => state.job.savedStatus);
+  const savedJobs = useSelector((state) => state.job.savedJobs);
   // Apply Job Handler
   const applyJobHandler = async (jobId) => {
     const response = await axios.post(
       "http://localhost:5000/api/v1/job/apply",
       { student_id: studentId, jobId }
     );
+      console.log(response);
     dispatch(changeApplyStatus(response.data));
   };
 
@@ -26,7 +28,7 @@ function JobCard({ job }) {
       studentId,
       jobId,
     });
-    console.log("Saved jobs are ", response);
+    // console.log("Saved jobs are ", response);
     dispatch(changeSavedStatus(response.data));
   };
 
@@ -35,11 +37,16 @@ function JobCard({ job }) {
     const job = appliedJobs.find((appliedJob) => appliedJob._id === id);
     return job ? true : false;
   };
+  const isSaved = (id) => {
+    const job = savedJobs.find((savedJob) => savedJob._id === id);
+    return job ? true : false;
+  };
 
   // Re-render when the applyStatus changes
   useEffect(() => {}, [applyStatus, savedStatus]);
   return (
     <div className="border-solid border-2 border-neutral-200 rounded-md border-b-4 mt-8 px-6 py-6 flex flex-col gap-4">
+      {/* {console.log(savedJobs)} */}
       <div className="flex w-full gap-4 ">
         <div className="">
           <img
@@ -78,6 +85,19 @@ function JobCard({ job }) {
             // onClick={() => saveJobHandler(job._id)}
           >
             Save
+          </button>
+          <button
+            disable={isSaved() ? true : false}
+            className={` text-white py-0.5 px-2 rounded-md 
+            ${
+              isSaved(job._id)
+                ? "bg-red-100 cursor-not-allowed"
+                : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
+            }
+            `}
+            onClick={() => saveJobHandler(job?._id)}
+          >
+            {isSaved(job._id) ? "Saved ✔" : "Save"}
           </button>
           <button
             disable={isApplied() ? true : false}

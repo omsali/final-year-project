@@ -378,7 +378,7 @@ const RecruiterCreateJobContainer = () => {
             </p>
           </div>
           <div className="flex items-center gap-8">
-            <div className="flex border border-neutral-300 border border-neutral-300 items-center p-1 rounded-lg">
+            <div className="flex border border-neutral-300  items-center p-1 rounded-lg">
               <BiRupee />
               <input
                 type="text"
@@ -396,7 +396,7 @@ const RecruiterCreateJobContainer = () => {
               />
             </div>
             <p>-</p>
-            <div className="flex border border-neutral-300 border border-neutral-300 items-center p-1 rounded-lg">
+            <div className="flex border border-neutral-300  items-center p-1 rounded-lg">
               <BiRupee className="" />
               <input
                 type="text"

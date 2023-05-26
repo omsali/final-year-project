@@ -13,9 +13,7 @@ function ProfileContainer() {
   const currentTab = useSelector((state) => state.handler.profileTab);
   const studentId = useSelector((state) => state.job.id);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getStudentInfo(studentId));
-  }, []);
+  
   return (
     <div className="">
       <AboutHeader />

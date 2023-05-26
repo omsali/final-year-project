@@ -31,7 +31,7 @@ function Login() {
         <p className="underline text-sm cursor-pointer ml-40">
           Forgot Password?
         </p>
-        <button className=" w-1/2 cursor-pointer text-white bg-black py-3 px-2 rounded-md">
+        <button className=" w-1/2 cursor-pointer text-white bg-black py-3 px-2 rounded-md" onClick={()=>navigate("/jobs")}>
           Login
         </button>
         <p
