@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changeApplyStatus,
   changeSavedStatus,
+  getAllJobs,
+  getSavedJobs,
 } from "../../redux/features/jobSlice";
 function JobCard({ job }) {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ function JobCard({ job }) {
 
   // Save Job Handler
   const saveJobHandler = async (jobId) => {
+  
     const response = await axios.post("http://localhost:5000/api/v1/job/save", {
       studentId,
       jobId,
@@ -43,7 +46,9 @@ function JobCard({ job }) {
   };
 
   // Re-render when the applyStatus changes
-  useEffect(() => {}, [applyStatus, savedStatus]);
+  useEffect(() => {
+    dispatch(getSavedJobs(studentId))
+  }, [applyStatus, savedStatus])
   return (
     <div className="border-solid border-2 border-neutral-200 rounded-md border-b-4 mt-8 px-6 py-6 flex flex-col gap-4">
       {/* {console.log(savedJobs)} */}
@@ -87,17 +92,17 @@ function JobCard({ job }) {
             Save
           </button>
           <button
-            disable={isSaved() ? true : false}
-            className={` text-white py-0.5 px-2 rounded-md 
-            ${
-              isSaved(job._id)
-                ? "bg-red-100 cursor-not-allowed"
-                : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
-            }
-            `}
+            // disable={isSaved() ? true : false}
+            // className={` text-white py-0.5 px-2 rounded-md 
+            // ${
+            //   isSaved(job._id)
+            //     ? "bg-red-100 cursor-not-allowed"
+            //     : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
+            // }
+            // `}
             onClick={() => saveJobHandler(job?._id)}
           >
-            {isSaved(job._id) ? "Saved ✔" : "Save"}
+            {/* {isSaved(job._id) ? "Saved ✔" : "Save"} */}Save
           </button>
           <button
             disable={isApplied() ? true : false}
