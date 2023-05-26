@@ -74,14 +74,15 @@ function AboutBody() {
           Upload a new photo
         </button>
 
-        <label class="block text-lg font-bold mb-2" for="base_country">
-          Where are you based :
+        <label class="block text-lg font-bold mb-2" for="user_email">
+          Email address :
         </label>
         <input
           class="w-full h-10 mb-6 appearance-none border border-neutral-300 rounded py-2 px-3 mb-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="base_country"
+          id="user_email"
           type="text"
           placeholder="e.g. India"
+          value={studentInfo.email}
         />
         <div className="flex gap-8">
           <div className="w-8/12 flex flex-col gap-2">

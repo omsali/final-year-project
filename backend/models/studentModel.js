@@ -76,30 +76,29 @@ const studentSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  projects: [
-    {
-      name: {
-        type: String,
-        default: "",
+  projects: {
+    type: [
+      {
+        project_title: {
+          type: String,
+          default: "",
+        },
+        project_description: {
+          type: String,
+          default: "",
+        },
+        project_github_link: {
+          type: String,
+          default: "",
+        },
+        project_live_link: {
+          type: String,
+          default: "",
+        },
       },
-      summary: {
-        type: String,
-        default: "",
-      },
-      github_link: {
-        type: String,
-        default: "",
-      },
-      live_link: {
-        type: String,
-        default: "",
-      },
-      description: {
-        type: String,
-        default: "",
-      },
-    },
-  ],
+    ],
+    default: [],
+  },
   cgpa: {
     type: Number,
     default: 0,
@@ -114,6 +113,12 @@ const studentSchema = new mongoose.Schema({
   savedJobs: {
     type: Array,
     default: [],
+  },
+  tenth_marks: {
+    type: Number,
+  },
+  twelth_marks: {
+    type: Number,
   },
   education: {
     type: [
