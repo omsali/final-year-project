@@ -8,6 +8,7 @@ import SocialProfile from "../Social Profile/SocialProfile";
 import { ProfileOverview } from "./ProfileOverview";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentInfo } from "../../redux/features/studentSlice";
+import { Projects } from "../Projects/Projects";
 
 function ProfileContainer() {
   const currentTab = useSelector((state) => state.handler.profileTab);
@@ -27,6 +28,8 @@ function ProfileContainer() {
           <Skills />
           <hr class="h-px my-8 bg-gray-300 border-0 w-11/12 mx-auto" />
           <Achievements />
+          <hr class="h-px my-8 bg-gray-300 border-0 w-11/12 mx-auto" />
+          <Projects />
         </div>
       )}
 

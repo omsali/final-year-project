@@ -58,12 +58,6 @@ function ProfileOverview() {
           </div>
         </div>
         <div>
-          <p className="text-sm mb-2 text-[#717584]">Desired Salary</p>
-          <p className="text-sm border border-solid w-fit rounded-md px-1 py-1 tracking-tighter bg-[#ededed] ">
-            $6000
-          </p>
-        </div>
-        <div>
           <p className="text-sm mb-2 text-[#717584]">Desired Role</p>
           <p className="text-sm border border-solid w-fit rounded-md px-1 py-1 tracking-tighter bg-[#ededed] ">
             {studentInfo.primary_role}
