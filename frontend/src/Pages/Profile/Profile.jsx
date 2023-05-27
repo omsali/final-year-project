@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 import axios from "axios";
 import { createPortal } from "react-dom";
+import { getStudentInfo } from "../../redux/features/studentSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ export default function Profile() {
     linkedin_profile:"",
     personal_website:""
   })
+  
   const handleCreateProfile = async()=>{
     
 
