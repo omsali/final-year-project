@@ -7,11 +7,13 @@ import { JobCard } from "../JobCard/JobCard";
 import { JobsListing } from "../JobsListing/JobsListing";
 import { FilterSection } from "./FilterSection";
 import { set } from "mongoose";
+import { useSelector } from "react-redux";
 
-function JobsFilterSection() {
+function JobsFilterSection({ currentTab, handleTab }) {
 
   const [showFilter, setShowFilter] = useState(false);
-  const [currentTab, setCurrentTab] = useState("browseall");
+  const savedJobs = useSelector((state) => state.job.savedJobs);
+
 
   const closeModal = () => {
     setShowFilter(!showFilter);
@@ -22,13 +24,20 @@ function JobsFilterSection() {
       <p className="text-3xl font-bold mb-4">Search for jobs</p>
       {/* Tabs : Browse all , Saved , hidden */}
       <div className="text-sm  flex gap-5 tracking-tighter">
-        <p className="font-semibold underline underline-offset-8 cursor-pointer">
+        <div
+        onClick={() => handleTab()}
+        className={`${currentTab === "browseall" 
+        ? "font-semibold underline underline-offset-8"
+         : "cursor-pointer" }`}>
           Browse all
-        </p>
-        <p className="cursor-pointer">
+        </div>
+        <div onClick={() => handleTab()}
+        className={`${currentTab === "saved" 
+        ? "font-semibold underline underline-offset-8"
+         : "cursor-pointer" }`}>
           Saved
-          <span className="bg-neutral-200 m-1 text-xs px-0.5 rounded">0</span>
-        </p>
+          <span className="bg-neutral-200 m-1 text-xs px-0.5 rounded">{savedJobs.length}</span>
+        </div>
       </div>
       <div className="flex flex-col w-full mt-6 border-solid border-2 border-neutral-200 px-4 py-4 rounded-t-md border-b-0">
         <div className="flex gap-4">

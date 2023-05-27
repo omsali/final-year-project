@@ -20,7 +20,7 @@ function JobCard({ job }) {
       "http://localhost:5000/api/v1/job/apply",
       { student_id: studentId, jobId }
     );
-      console.log(response);
+      // console.log(response);
     dispatch(changeApplyStatus(response.data));
   };
 
@@ -31,7 +31,8 @@ function JobCard({ job }) {
       studentId,
       jobId,
     });
-    // console.log("Saved jobs are ", response);
+    // console.log("Saved jobs are ", response.data);
+    // console.log("All Saved jobs ", savedJobs);
     dispatch(changeSavedStatus(response.data));
   };
 
@@ -86,30 +87,24 @@ function JobCard({ job }) {
             2 WEEKS AGO
           </p>
           <button
-            className="cursor-pointer border border-solid border-black text-black font-semibold px-2 py-0.5 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-md transition-all delay-170"
-            // onClick={() => saveJobHandler(job._id)}
-          >
-            Save
-          </button>
-          <button
-            // disable={isSaved() ? true : false}
-            // className={` text-white py-0.5 px-2 rounded-md 
-            // ${
-            //   isSaved(job._id)
-            //     ? "bg-red-100 cursor-not-allowed"
-            //     : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
-            // }
-            // `}
+            disable={isSaved() ? true : false}
+            className={` py-0.5 px-2 rounded-md 
+            ${
+              isSaved(job._id)
+                ? "bg-green-600 text-white cursor-not-allowed"
+                : "cursor-pointer bg-white border border-black text-black font-semibold hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF]  transition-all delay-150"
+            }
+            `}
             onClick={() => saveJobHandler(job?._id)}
           >
-            {/* {isSaved(job._id) ? "Saved ✔" : "Save"} */}Save
+            {isSaved(job._id) ? "Saved ✔" : "Save"}
           </button>
           <button
             disable={isApplied() ? true : false}
             className={` text-white py-0.5 px-2 rounded-md 
             ${
               isApplied(job._id)
-                ? "bg-red-100 cursor-not-allowed"
+                ? "bg-red-600 cursor-not-allowed"
                 : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
             }
             `}

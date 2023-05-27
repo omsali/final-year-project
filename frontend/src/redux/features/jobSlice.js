@@ -39,7 +39,7 @@ const jobSlice = createSlice({
       state.applyStatus = action.payload;
     },
     changeSavedStatus: (state, action) => {
-      state.savedJobs = action.payload;
+      state.savedStatus = action.payload;
     },
   },
   extraReducers: (builder) => {
