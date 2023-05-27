@@ -7,8 +7,7 @@ const LandingPageContainer = () => {
         <div>
             <div class="m-2 flex h-16 items-center justify-evenly font-semibold">
                 <div class="w-1/2">
-                    <img src="" alt="" />
-                    <p>Logo</p>
+                <img src="./Assets/website-logo.jpg" alt="logo" className="w-12 h-12" />
                 </div>
                 <div class="hover:border-b-2 hover:border-b-[#143fcd] hover:text-[#143fcd]"><Link to="/profile">For job seekers</Link></div>
                 <div class="hover:border-b-2 hover:border-b-[#143fcd] hover:text-[#143fcd]"><Link to="/recruiter/access">For companies</Link></div>

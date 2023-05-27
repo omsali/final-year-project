@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <div className="navbar-wrapper h-16">
       {/* <div> */}
-      <div>Logo</div>
+      <img src="/Assets/website-logo.jpg" alt="logo" className="w-12 h-12" />
       {/* </div> */}
       <div className="navbar-options">
         {showSearch && (

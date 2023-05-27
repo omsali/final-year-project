@@ -5,13 +5,17 @@ import { RxCross2 } from "react-icons/rx";
 import { BsFilter } from "react-icons/bs";
 import { JobCard } from "../JobCard/JobCard";
 import { JobsListing } from "../JobsListing/JobsListing";
-import FilterSection from "./FilterSection";
+import { FilterSection } from "./FilterSection";
 import { set } from "mongoose";
 
 function JobsFilterSection() {
 
   const [showFilter, setShowFilter] = useState(false);
   const [currentTab, setCurrentTab] = useState("browseall");
+
+  const closeModal = () => {
+    setShowFilter(!showFilter);
+  };
 
   return (
     <div className=" mt-6">
@@ -44,9 +48,23 @@ function JobsFilterSection() {
       </div>
       {!showFilter && <div className="flex justify-center items-center font-bold py-1 border-2 border-solid border-neutral-200 gap-2 rounded-b-md border-b-4 cursor-pointer">
         <BsFilter className="text-[#398afb] " />
-        <button onClick={()=>setShowFilter(true)}>Filter</button>
+        <button
+            className="cursor-pointer text-black font-semibold px-2 py-0.5"
+            onClick={() => {
+              setShowFilter(!showFilter);
+            }}
+          >
+            Filter
+          </button>
       </div>}
-        {showFilter && <FilterSection onClose={()=>setShowFilter(false)} />}
+      <div>
+        {showFilter && (
+          <FilterSection
+            clickHandler={closeModal}
+            isOpen={showFilter}
+          />
+        )}
+      </div>
     </div>
   );
 }
