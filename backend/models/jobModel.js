@@ -22,7 +22,10 @@ const jobSchema = new mongoose.Schema({
   work_experience: {
     type: String,
   },
-  skills_required: [{ type: String }],
+  skills_required: {
+    type: Array,
+    default: []
+  },
   salary_range: {
     type: {
       to: Number,

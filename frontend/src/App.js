@@ -36,7 +36,7 @@ function App() {
         {/* <Route path="/recruiter/profile" element={<UserProfile />} /> */}
         <Route path="/recruiter/createjob" element={<CreateJob />} />
         <Route path="/recruiter/postedjob" element={<PostedJob />} />
-        <Route path="/recruiter/access" element={<VerifyRecruiter />} />
+        {/* <Route path="/recruiter/access" element={<VerifyRecruiter />} /> */}
         <Route path="/recruiter/company" element={<RecruiterProfile />} />
       </Routes>
     </div>

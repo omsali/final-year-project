@@ -21,7 +21,7 @@ function Jobs() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAppliedJobs(id));
-    dispatch(getSavedJobs(id))
+    dispatch(getSavedJobs(id));
   }, [applyStatus, savedStatus ]);
   return (
     <div>
