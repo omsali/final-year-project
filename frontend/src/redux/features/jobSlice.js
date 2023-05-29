@@ -3,8 +3,8 @@ import axios from "axios";
 const initialState = {
   jobs: [],
   // Static studentId and recruiter to fetch data
-  id: "646f3b77395af6b944353c8b",
-  recruiter_id: "646f4117395af6b944353c8d",
+  id: "640760d9316868c1913b5c2e",
+  recruiter_id: "646cb0cc7b2a9d4a2761105f",
   // ************
   appliedJobs: [],
   applyStatus: [],
