@@ -87,26 +87,7 @@ function JobCard({ job }) {
           <p className="tracking-tighter text-xs font-semibold text-[#00431B]">
             2 WEEKS AGO
           </p>
-          <button
-            className="cursor-pointer border border-solid border-black text-black font-semibold px-2 py-0.5 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-md transition-all delay-170"
-            // onClick={() => saveJobHandler(job._id)}
-          >
-            Save
-          </button>
-          {/* <button
-            disable={isSaved() ? true : false}
-            className={` text-white py-0.5 px-2 rounded-md 
-            ${
-              isSaved(job._id)
-                ? "bg-red-100 cursor-not-allowed"
-                : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
-            }
-            `}
-            onClick={() => saveJobHandler(job?._id)}
-          >
-            {isSaved(job._id) ? "Saved ✔" : "Save"}
-            Save
-          </button> */}
+          
           <button
             disable={isApplied() ? true : false}
             className={` text-white py-0.5 px-2 rounded-md 
