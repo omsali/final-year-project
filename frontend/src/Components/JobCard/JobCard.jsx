@@ -20,6 +20,7 @@ function JobCard({ job }) {
       "http://localhost:5000/api/v1/job/apply",
       { student_id: studentId, jobId }
     );
+    
     dispatch(changeApplyStatus(response.data));
   };
 
