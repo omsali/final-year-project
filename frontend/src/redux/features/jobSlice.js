@@ -11,7 +11,7 @@ const initialState = {
   savedJobs: [],
   savedStatus: [],
   filteredJobs: [],
-  sliderValue: 0,
+  sliderValue : 0,
 };
 
 export const getAllJobs = createAsyncThunk("jobs/fetchJobs", async () => {
@@ -46,14 +46,16 @@ const jobSlice = createSlice({
     filter: (state, action) => {
       switch(action.type) {
 
+        case "SEARCH_FILTER":
+            state.filteredJobs = state.jobs.filter((job) => job.company_name.toLowerCase() === action.payload.toLowerCase());
+
         case "FILTER_BY_SKILLS":
-          state.filteredJobs = state.jobs.filter((job) => job.skills_required.find(action.payload));
+            state.filteredJobs = state.jobs.filter((job) => job.skills_required.includes(action.payload.toLowerCase()));
         
         case "FILTER_BY_TYPE":
-          state.filteredJobs = state.jobs.filter((job) => job.type_of_position === action.payload);
+          state.filteredJobs = state.jobs.filter((job) => job.type_of_position.toLowerCase() === action.payload.toLowerCase());
         
         case "SLIDER": {
-          console.log(action.payload);
           state.sliderValue = action.payload;
           state.filteredJobs = state.jobs.filter((job) => job.yoe <= state.sliderValue);
         }
@@ -83,7 +85,7 @@ const jobSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAllJobs.fulfilled, (state, action) => {
       state.jobs = action.payload.data.jobs;
-      state.filteredJobs = action.payload.jobs;
+      state.filteredJobs = action.payload.data.jobs;
     });
     builder.addCase(getAppliedJobs.fulfilled, (state, action) => {
       state.appliedJobs = action.payload.data.student_appliedJobs;

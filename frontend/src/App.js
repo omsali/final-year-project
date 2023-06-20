@@ -4,7 +4,7 @@ import Profile from "./Pages/Profile/Profile";
 import { Jobs } from "./Pages/Jobs/Jobs";
 import { UserProfile } from "./Pages/UserProfile/UserProfile";
 import { AppliedApplications } from "./Pages/Applied Jobs/AppliedApplications";
-import { VerifyRecruiter } from "./Pages/RecruiterProfile/VerifyRecruiter";
+// import { VerifyRecruiter } from "./Pages/RecruiterProfile/VerifyRecruiter";
 import { CreateJob } from "./Pages/RecruiterJobs/CreateJob";
 import { PostedJob } from "./Pages/RecruiterJobs/PostedJob";
 import { RecruiterProfile } from "./Pages/RecruiterProfile/RecruiterProfile";

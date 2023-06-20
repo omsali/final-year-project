@@ -2,9 +2,24 @@ import "./navbar.css";
 import { AiOutlineSearch, AiOutlineBell } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { filteredJobs } from "../../redux/features/jobSlice";
+
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(true);
+  const [searchBox, setSearchBox] = useState();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setSearchBox(e.target.value);
+  };
+  const handleSearch = () => {
+    dispatch({type: 'SEARCH_FILTER', payload: searchBox});
+    // setShowSearch((prev) => !prev)
+    console.log(filteredJobs);
+  };
+
   return (
     <div className="navbar-wrapper h-16">
       {/* <div> */}
@@ -17,10 +32,11 @@ const Navbar = () => {
             id="search-jobs"
             type="text"
             placeholder="Search"
+            onChange={handleChange}
           />
         )}
         <div>
-          <AiOutlineSearch onClick={() => setShowSearch((prev) => !prev)} />
+          <AiOutlineSearch onClick={handleSearch} />
         </div>
         <div>
           <AiOutlineBell />

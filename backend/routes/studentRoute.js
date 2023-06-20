@@ -21,6 +21,7 @@ router.route("/student/:id/info").get(getStudentInfo);
 router.route("/student/:id/update_about").put(updateStudentAboutSection);
 router.route("/student/:id/update_socials").put(updateStudentSocials);
 router.route("/student/:id/update_achievements").put(updateStudentAchievements);
+// router.route("/student/:id/add_education").put(addEducation);
 router.route("/student/:id/update_skills").put(updateStudentSkills);
 
 // Login user

@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { filter, filteredJobs } from "../../redux/features/jobSlice";
 
 function FilterSection({ clickHandler, isOpen }) {
 
-    const sliderValue = useSelector((state) => state.job.sliderValue);
+    // const sliderVal = useSelector((state) => state.job.sliderValue);
+    const [sliderValue, setSliderValue] = useState(0);
 
     const types = ["FullTime", "Internship", "Contract"]
     const skills = ["JavaScript", "ReactJs", "NextJs"]
@@ -13,6 +15,22 @@ function FilterSection({ clickHandler, isOpen }) {
     const closeModal = () => {
         clickHandler();
     };
+
+
+    const handleJobTypeFilter = (e) => {
+        dispatch({type: 'FILTER_BY_TYPE', payload: e.target.value});
+      };
+
+    const handleSliderChangeFilter = (e) => {
+        const newValue = e.target.value;
+        setSliderValue(newValue);
+        dispatch({ type: 'SLIDER', payload: newValue });
+      };
+
+    const handleApplyFilter = () =>{
+        
+    }
+
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10 " onClose={closeModal}>
@@ -29,6 +47,7 @@ function FilterSection({ clickHandler, isOpen }) {
                 </Transition.Child>
 
                 <div className="fixed inset-0 overflow-y-auto">
+                    {console.log(filteredJobs)}
                     <div className="flex min-h-full items-center justify-center p-4 ">
                         <Transition.Child
                             as={Fragment}
@@ -59,10 +78,11 @@ function FilterSection({ clickHandler, isOpen }) {
                                                                 type="radio"
                                                                 name="skills"
                                                                 value={item}
-                                                                onChange={(e) => dispatch({
+                                                                onChange={(e) => {
+                                                                    dispatch(filter({
                                                                     type: 'FILTER_BY_SKILLS',
                                                                     payload: e.target.value,
-                                                                })}
+                                                                }))}}
                                                                 id={item} />
                                                             <span>{item}</span>
                                                         </label>
@@ -85,10 +105,7 @@ function FilterSection({ clickHandler, isOpen }) {
                                                                     type="radio"
                                                                     name="types"
                                                                     value={item}
-                                                                    onChange={(e) => dispatch({
-                                                                        type: 'FILTER_BY_TYPE',
-                                                                        payload: e.target.value,
-                                                                    })}
+                                                                    onChange={handleJobTypeFilter}
                                                                     id={item} />
                                                                 <span>{item}</span>
                                                             </label>
@@ -110,10 +127,7 @@ function FilterSection({ clickHandler, isOpen }) {
                                                         max="6"
                                                         step="1"
                                                         defaultValue="2"
-                                                        onChange={(e) => dispatch({ 
-                                                            type: "SLIDER", 
-                                                            payload: e.target.value 
-                                                        })}
+                                                        onChange={handleSliderChangeFilter}
                                                     />
                                                 </label>
                                             </div>
@@ -145,6 +159,15 @@ function FilterSection({ clickHandler, isOpen }) {
                                             onClick={() => dispatch({ type: "CLEAR" })}
                                             >
                                                 Clear
+                                            </button>
+                                        </p>
+                                    </div>
+                                    <div className='flex justify-center'>
+                                        <p  className='bg-green-600 text-white border border-green-600 py-2 px-8 mb-4 rounded-lg'>
+                                            <button
+                                            // onClick={handleApplyFilter}
+                                            >
+                                                Apply Filter
                                             </button>
                                         </p>
                                     </div>

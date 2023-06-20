@@ -5,6 +5,7 @@ import { getAllJobs } from "../../redux/features/jobSlice";
 function JobsListing({ currentTab }) {
   // const savedJobs = useSelector((state) => state.)
   const jobs = useSelector((state) => state.job.jobs);
+  const filteredJobs = useSelector((state) => state.job.filteredJobs)
   const savedJobs = useSelector((state) => state.job.savedJobs);
 
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function JobsListing({ currentTab }) {
   }, []);
   return (
     <div>
+      {/* {console.log(filteredJobs)} */}
       {currentTab === "browseall" 
         ? <div>
         {jobs.map((job, i) => {
