@@ -93,8 +93,7 @@ function JobCard({ job }) {
               isSaved(job._id)
                 ? "bg-green-600 text-white cursor-not-allowed"
                 : "cursor-pointer bg-white border border-black text-black font-semibold hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF]  transition-all delay-150"
-            }
-            `}
+            }`}
             onClick={() => saveJobHandler(job?._id)}
           >
             {isSaved(job._id) ? "Saved ✔" : "Save"}
