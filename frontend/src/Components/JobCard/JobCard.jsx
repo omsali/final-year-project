@@ -107,8 +107,6 @@ function JobCard({ job }) {
             {isSaved(job._id) ? "Saved ✔" : "Save"}
             Save
           </button> */}
-
-    
           <button
             disable={isApplied() ? true : false}
             className={` text-white py-0.5 px-2 rounded-md 
