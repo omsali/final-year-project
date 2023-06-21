@@ -52,6 +52,17 @@ export const updateAchievementsSection = createAsyncThunk(
     );
   }
 );
+
+export const addEducationSection = createAsyncThunk(
+  "student/updateAbout",
+  async (updateInfo) => {
+    const { id, payload } = updateInfo;
+    return await axios.put(
+      `http://localhost:5000/api/v1/student/${id}/add_education`,
+      payload
+    );
+  }
+);
 // ******************
 
 const studentSlice = createSlice({

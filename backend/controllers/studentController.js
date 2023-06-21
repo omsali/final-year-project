@@ -135,6 +135,17 @@ exports.updateStudentAchievements = async (req, res, next) => {
   });
 };
 
+exports.addEducation = async (req, res, next) => {
+  const { id } = req.params;
+  const { college_name, graduation, degree, gpa, max_gpa } = req.body;
+  const student = await Student.findOneAndUpdate({ _id: id }, { college_name, graduation, degree, gpa, max_gpa });
+  res.status(200).json({
+    success: true,
+    message: "Education added successfully",
+    student,
+  });
+};
+
 exports.updateStudentSkills = async (req, res, next) => {
   const { id } = req.params;
   const { skills } = req.body;

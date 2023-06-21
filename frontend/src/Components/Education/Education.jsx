@@ -33,7 +33,8 @@ function Education() {
         </div>
       </div>
       <div className="text-right mt-6 mb-2">
-        <button className="cursor-pointer border border-solid border-black text-black font-semibold px-8 py-1 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-lg transition-all delay-170 text-right">
+        <button className="cursor-pointer border border-solid border-black text-black font-semibold px-8 py-1 hover:bg-[#cee1fd] hover:text-[#0F74FF] hover:border-[#0F74FF] rounded-lg transition-all delay-170 text-right"
+          >
           Save
         </button>
       </div>

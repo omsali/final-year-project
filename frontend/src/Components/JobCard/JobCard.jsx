@@ -30,7 +30,8 @@ function JobCard({ job }) {
       studentId,
       jobId,
     });
-    // console.log("Saved jobs are ", response);
+    console.log("Saved jobs are ", response.data);
+    console.log("All Saved jobs ", savedJobs);
     dispatch(changeSavedStatus(response.data));
   };
 
@@ -55,13 +56,14 @@ function JobCard({ job }) {
         <div className="">
           <img
             className="w-12 h-12 object-scale-down   "
-            src="./Assets/landing-page-bg.jpg"
-            alt=""
+            src="./Assets/logos/logoGoogle.png"
+            alt={`${job?.job_title}`}
           />
         </div>
         <div>
-          <p className="text-xl font-semibold">{job?.job_title}</p>
+          <p className="text-xl font-semibold">{job?.company_name}</p>
           <p className="text-base">
+            {job.job_description ? job.job_description : "Technology company focusing on online advertising and search engine technology"}
             Technology company focusing on online advertising and search engine
             technology
           </p>
@@ -75,9 +77,9 @@ function JobCard({ job }) {
       </div>
       <div className="flex justify-between border-solid border border-neutral-200 px-2 py-2 rounded-md">
         <div className="flex gap-4 items-center">
-          <p className="font-semibold">React Developer</p>
+          <p className="font-semibold">{job?.job_title}</p>
           <p className="tracking-tighter text-sm text-neutral-600">
-            In Office : ₹ 1.2L - 1.8L : No equity
+            {job?.remote_work_policy} : {job.salary_range.from != 0 ? ` ₹ ${job.salary_range.from}L - ${job.salary_range.to}L` : "Not Disclosed"} 
           </p>
         </div>
         <div className="flex items-center gap-4">
@@ -109,7 +111,7 @@ function JobCard({ job }) {
             className={` text-white py-0.5 px-2 rounded-md 
             ${
               isApplied(job._id)
-                ? "bg-red-100 cursor-not-allowed"
+                ? "bg-red-600 cursor-not-allowed"
                 : "cursor-pointer hover:bg-[#076efe] transition-all delay-150 bg-black"
             }
             `}

@@ -10,6 +10,8 @@ const initialState = {
   applyStatus: [],
   savedJobs: [],
   savedStatus: [],
+  filteredJobs: [],
+  sliderValue : 0,
 };
 
 export const getAllJobs = createAsyncThunk("jobs/fetchJobs", async () => {
@@ -39,12 +41,51 @@ const jobSlice = createSlice({
       state.applyStatus = action.payload;
     },
     changeSavedStatus: (state, action) => {
-      state.savedJobs = action.payload;
+      state.savedStatus = action.payload;
     },
+    filter: (state, action) => {
+      switch(action.type) {
+
+        case "SEARCH_FILTER":
+            state.filteredJobs = state.jobs.filter((job) => job.company_name.toLowerCase() === action.payload.toLowerCase());
+
+        case "FILTER_BY_SKILLS":
+            state.filteredJobs = state.jobs.filter((job) => job.skills_required.includes(action.payload.toLowerCase()));
+        
+        case "FILTER_BY_TYPE":
+          state.filteredJobs = state.jobs.filter((job) => job.type_of_position.toLowerCase() === action.payload.toLowerCase());
+        
+        case "SLIDER": {
+          state.sliderValue = action.payload;
+          state.filteredJobs = state.jobs.filter((job) => job.yoe <= state.sliderValue);
+        }
+
+        case "CLEAR":
+          state.filteredJobs = state.jobs;
+
+        case "REMOTE_CULTURE":
+          state.filteredJobs = state.jobs.filter((job) => job.vremote_work_policy.toLowerCase() === "remote");
+      }
+    },
+    // filterBySkills: (state, action) => {
+    //   state.filteredJobs = state.jobs.filter((job) => job.skills_required.find(action.payload));
+    // },
+    // filterByType: (state, action) => {
+    //   state.filteredJobs = state.jobs.filter((job) => job.type_of_position === action.payload);
+    // },
+    // filterByYOE: (state, action) => {
+    //   console.log(action.payload);
+    //   state.sliderValue = action.payload;
+    //   state.filteredJobs = state.jobs.filter((job) => job.yoe <= state.sliderValue);
+    // },
+    // clearFilter: (state,action) => {
+    //   state.filteredJobs = state.jobs;
+    // }
   },
   extraReducers: (builder) => {
     builder.addCase(getAllJobs.fulfilled, (state, action) => {
       state.jobs = action.payload.data.jobs;
+      state.filteredJobs = action.payload.data.jobs;
     });
     builder.addCase(getAppliedJobs.fulfilled, (state, action) => {
       state.appliedJobs = action.payload.data.student_appliedJobs;
@@ -55,5 +96,5 @@ const jobSlice = createSlice({
   },
 });
 export default jobSlice.reducer;
-export const { changeApplyStatus, changeSavedStatus } = jobSlice.actions;
+export const { changeApplyStatus, changeSavedStatus, filteredJobs,filter } = jobSlice.actions;
 // http://localhost:3000/jobs

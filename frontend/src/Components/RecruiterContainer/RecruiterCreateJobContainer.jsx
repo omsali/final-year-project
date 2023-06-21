@@ -22,6 +22,7 @@ const RecruiterCreateJobContainer = () => {
   const [locationInput, setLocationInput] = useState("");
   const [createJobDetails, setCreateJobDetails] = useState({
     recruiter_id: recruiterid,
+    company_name: "",
     job_title: "",
     job_description: "",
     type_of_position: "",
@@ -37,6 +38,7 @@ const RecruiterCreateJobContainer = () => {
   });
   const {
     recruiter_id,
+    company_name,
     job_title,
     job_description,
     type_of_position,
@@ -93,6 +95,24 @@ const RecruiterCreateJobContainer = () => {
           {/* Job Details */}
           <div className="w-full">
             <div className="">
+              <label for="title" className="block text-lg font-bold mb-0.5">
+                Company name<span className="text-red-700 font-thin text-sm">*</span>
+              </label>
+              <input
+                class="w-full appearance-none border border-neutral-300 rounded py-2 px-3 mb-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="title"
+                type="text"
+                placeholder="e.g : Google"
+                value={company_name}
+                onChange={(e) =>
+                  setCreateJobDetails({
+                    ...createJobDetails,
+                    company_name: e.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="mt-8">
               <label for="title" className="block text-lg font-bold mb-0.5">
                 Title<span className="text-red-700 font-thin text-sm">*</span>
               </label>
