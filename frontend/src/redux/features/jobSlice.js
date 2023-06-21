@@ -11,7 +11,7 @@ const initialState = {
   savedJobs: [],
   savedStatus: [],
   filteredJobs: [],
-  sliderValue : 0,
+  sliderValue: 0,
 };
 
 export const getAllJobs = createAsyncThunk("jobs/fetchJobs", async () => {
@@ -43,28 +43,37 @@ const jobSlice = createSlice({
     changeSavedStatus: (state, action) => {
       state.savedStatus = action.payload;
     },
+    filterJobsBySkills: (state, action) => {
+      state.filteredJobs = state.jobs.filter((job) =>
+        job.skills_required.includes(action.payload)
+      );
+    },
+    searchJob: (state, action) => {
+      state.filteredJobs = state.jobs.filter((job) =>
+        job.company_name.includes(action.payload)
+      );
+    },
+    filterByJobType: (state, action) => {
+      state.filteredJobs = state.jobs.filter(
+        (job) => job.type_of_position === action.payload
+      );
+    },
+    clearFilter: (state, action) => {
+      state.filteredJobs = state.jobs;
+    },
     filter: (state, action) => {
-      switch(action.type) {
-
-        case "SEARCH_FILTER":
-            state.filteredJobs = state.jobs.filter((job) => job.company_name.toLowerCase() === action.payload.toLowerCase());
-
-        case "FILTER_BY_SKILLS":
-            state.filteredJobs = state.jobs.filter((job) => job.skills_required.includes(action.payload.toLowerCase()));
-        
-        case "FILTER_BY_TYPE":
-          state.filteredJobs = state.jobs.filter((job) => job.type_of_position.toLowerCase() === action.payload.toLowerCase());
-        
+      switch (action.type) {
         case "SLIDER": {
           state.sliderValue = action.payload;
-          state.filteredJobs = state.jobs.filter((job) => job.yoe <= state.sliderValue);
+          state.filteredJobs = state.jobs.filter(
+            (job) => job.yoe <= state.sliderValue
+          );
         }
 
-        case "CLEAR":
-          state.filteredJobs = state.jobs;
-
         case "REMOTE_CULTURE":
-          state.filteredJobs = state.jobs.filter((job) => job.vremote_work_policy.toLowerCase() === "remote");
+          state.filteredJobs = state.jobs.filter(
+            (job) => job.vremote_work_policy.toLowerCase() === "remote"
+          );
       }
     },
     // filterBySkills: (state, action) => {
@@ -96,5 +105,14 @@ const jobSlice = createSlice({
   },
 });
 export default jobSlice.reducer;
-export const { changeApplyStatus, changeSavedStatus, filteredJobs,filter } = jobSlice.actions;
+export const {
+  changeApplyStatus,
+  changeSavedStatus,
+  filteredJobs,
+  filter,
+  filterJobsBySkills,
+  searchJob,
+  filterByJobType,
+  clearFilter,
+} = jobSlice.actions;
 // http://localhost:3000/jobs

@@ -46,14 +46,14 @@ function Sidebar() {
           <BsBagCheck className="text-xl" />
           <span>Applied</span>
         </div>
-        <div className="flex flex-col justify-center items-center text-sm cursor-pointer w-20 py-2">
+        {/* <div className="flex flex-col justify-center items-center text-sm cursor-pointer w-20 py-2">
           <BsChat className="text-xl" />
           <span>Messages</span>
         </div>
         <div className="flex flex-col justify-center items-center text-sm cursor-pointer w-20 py-2">
           <AiOutlineCompass className="text-xl" />
           <span>Discover</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
