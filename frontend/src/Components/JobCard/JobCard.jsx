@@ -63,7 +63,9 @@ function JobCard({ job }) {
         <div>
           <p className="text-xl font-semibold">{job?.company_name}</p>
           <p className="text-base">
-            {job.job_description ? job.job_description : "Technology company focusing on online advertising and search engine technology"}
+            {job.job_description
+              ? job.job_description
+              : "Technology company focusing on online advertising and search engine technology"}
             Technology company focusing on online advertising and search engine
             technology
           </p>
@@ -79,7 +81,10 @@ function JobCard({ job }) {
         <div className="flex gap-4 items-center">
           <p className="font-semibold">{job?.job_title}</p>
           <p className="tracking-tighter text-sm text-neutral-600">
-            {job?.remote_work_policy} : {job.salary_range.from != 0 ? ` ₹ ${job.salary_range.from}L - ${job.salary_range.to}L` : "Not Disclosed"} 
+            {job?.remote_work_policy} :{" "}
+            {job.salary_range.from != 0
+              ? ` ₹ ${job.salary_range.from}L - ${job.salary_range.to}L`
+              : "Not Disclosed"}
           </p>
         </div>
         <div className="flex items-center gap-4">
