@@ -58,7 +58,7 @@ function FilterSection({ clickHandler, isOpen }) {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <Dialog.Panel className="w-[700px] top-[150px] bg-white absolute px-[35px] py-8 border-style transition-all rounded-xl">
+                            <Dialog.Panel className="w-[700px] top-[50px] bg-white absolute px-[35px] py-8 border-style transition-all rounded-xl">
                                 <div className=' border border-blue-200 rounded-2xl p-5 bg-white'>
                                     <div className='flex justify-center'>
                                         <p onClick={closeModal} className='bg-blue-50 text-black border border-blue-200 py-2 px-8 mb-4 rounded-lg'>

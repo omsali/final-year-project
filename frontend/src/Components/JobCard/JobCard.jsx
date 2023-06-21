@@ -56,7 +56,7 @@ function JobCard({ job }) {
         <div className="">
           <img
             className="w-12 h-12 object-scale-down   "
-            src="./Assets/logos/logoGoogle.png"
+            src={`./Assets/logos/${job?.company_name}.png`}
             alt={`${job?.job_title}`}
           />
         </div>

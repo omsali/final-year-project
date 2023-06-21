@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filteredJobs } from "../../redux/features/jobSlice";
 
-
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(true);
   const [searchBox, setSearchBox] = useState();
@@ -15,7 +14,7 @@ const Navbar = () => {
     setSearchBox(e.target.value);
   };
   const handleSearch = () => {
-    dispatch({type: 'SEARCH_FILTER', payload: searchBox});
+    dispatch({ type: "SEARCH_FILTER", payload: searchBox });
     // setShowSearch((prev) => !prev)
     console.log(filteredJobs);
   };
